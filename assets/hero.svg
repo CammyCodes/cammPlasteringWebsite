@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8cbbd"/>
+      <stop offset="40%" stop-color="#d4b2a1"/>
+      <stop offset="100%" stop-color="#b89381"/>
+    </linearGradient>
+    <linearGradient id="wallPlaster" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cfab9a"/>
+      <stop offset="70%" stop-color="#e4c7b8"/>
+      <stop offset="100%" stop-color="#d9b6a5"/>
+    </linearGradient>
+    <linearGradient id="trowelSteel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#d0d5dd"/>
+      <stop offset="100%" stop-color="#8a92a0"/>
+    </linearGradient>
+    <linearGradient id="sunLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Wall with Fresh Pink-Brown Skim Plaster -->
+  <rect width="1200" height="800" fill="url(#heroBg)"/>
+  
+  <!-- Window Framing & Light Beam -->
+  <polygon points="0,0 450,0 250,800 0,800" fill="url(#sunLight)"/>
+  
+  <!-- Plaster Texture / Wave Layer -->
+  <path d="M 0,250 Q 300,180 600,280 T 1200,220 L 1200,800 L 0,800 Z" fill="url(#wallPlaster)" opacity="0.85"/>
+  
+  <!-- Skimming Lines (Trowel strokes) -->
+  <path d="M 150,320 C 350,300 550,350 750,310" stroke="#f2ded4" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 280,450 C 480,430 680,470 880,440" stroke="#f2ded4" stroke-width="16" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 100,580 C 400,550 700,600 1000,560" stroke="#ebd2c5" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Plasterer Silhouette & Trowel Action -->
+  <g transform="translate(620, 180)">
+    <!-- Arm holding trowel -->
+    <path d="M 280,320 Q 200,240 120,200 L 90,220 Q 180,270 240,360 Z" fill="#2d4263"/>
+    
+    <!-- Stainless Steel Trowel Blade -->
+    <polygon points="20,120 160,50 180,180 40,250" fill="url(#trowelSteel)" stroke="#6b7280" stroke-width="2"/>
+    <polygon points="35,130 150,70 165,175 50,235" fill="#f8fafc" opacity="0.4"/>
+    <!-- Trowel Handle Mount -->
+    <path d="M 80,140 L 120,120 L 110,100 L 70,120 Z" fill="#374151"/>
+    <!-- Wood Handle -->
+    <rect x="50" y="80" width="30" height="50" rx="8" fill="#854d0e" transform="rotate(-25 65 105)"/>
+  </g>
+
+  <!-- Title Badge Overlay -->
+  <rect x="40" y="700" width="480" height="60" rx="4" fill="#0e2138" opacity="0.9"/>
+  <text x="60" y="738" font-family="'Archivo', sans-serif" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="1.5">WORKSOP · HIGH-QUALITY SKIM FINISH</text>
+</svg>

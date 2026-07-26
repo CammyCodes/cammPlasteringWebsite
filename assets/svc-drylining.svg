@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="boardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="metalStud" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#boardBg)"/>
+  
+  <!-- Plasterboard seams -->
+  <line x1="260" y1="0" x2="260" y2="600" stroke="#64748b" stroke-width="4"/>
+  <line x1="540" y1="0" x2="540" y2="600" stroke="#64748b" stroke-width="4"/>
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#64748b" stroke-width="4"/>
+
+  <!-- Taped & Jointed compound strips -->
+  <rect x="242" y="0" width="36" height="600" fill="#f1f5f9" opacity="0.8"/>
+  <rect x="522" y="0" width="36" height="600" fill="#f1f5f9" opacity="0.8"/>
+  <rect x="0" y="282" width="800" height="36" fill="#f1f5f9" opacity="0.8"/>
+
+  <!-- Metal Stud Partition Framework visible on right side -->
+  <rect x="680" y="0" width="24" height="600" fill="url(#metalStud)"/>
+  <rect x="740" y="0" width="24" height="600" fill="url(#metalStud)"/>
+  <line x1="680" y1="150" x2="800" y2="150" stroke="#e2e8f0" stroke-width="8"/>
+  <line x1="680" y1="450" x2="800" y2="450" stroke="#e2e8f0" stroke-width="8"/>
+
+  <!-- Screw fixings dots -->
+  <g fill="#475569">
+    <circle cx="230" cy="80" r="4"/><circle cx="230" cy="200" r="4"/><circle cx="230" cy="380" r="4"/><circle cx="230" cy="500" r="4"/>
+    <circle cx="290" cy="80" r="4"/><circle cx="290" cy="200" r="4"/><circle cx="290" cy="380" r="4"/><circle cx="290" cy="500" r="4"/>
+    <circle cx="510" cy="80" r="4"/><circle cx="510" cy="200" r="4"/><circle cx="510" cy="380" r="4"/><circle cx="510" cy="500" r="4"/>
+    <circle cx="570" cy="80" r="4"/><circle cx="570" cy="200" r="4"/><circle cx="570" cy="380" r="4"/><circle cx="570" cy="500" r="4"/>
+  </g>
+</svg>

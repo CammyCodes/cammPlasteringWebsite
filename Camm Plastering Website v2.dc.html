@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  @keyframes camm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  body { margin: 0; font-family: 'Archivo', sans-serif; color: #16233a; background: #ffffff; -webkit-font-smoothing: antialiased; }
+  a { color: #1d4478; text-decoration: none; }
+  a:hover { color: #122e54; }
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #e8eaef;display:flex;align-items:center;justify-content:space-between;padding:16px 56px;gap:24px">
+  <a href="#top" style="display:flex;align-items:center"><img src="assets/camm-logo.png" alt="Camm Plastering Contractors Ltd" style="height:52px;display:block"></a>
+  <nav style="display:flex;gap:36px;align-items:center;font-weight:500;font-size:15px">
+    <a href="#services" style="color:#16233a">Services</a>
+    <a href="#sectors" style="color:#16233a">Sectors</a>
+    <a href="#clients" style="color:#16233a">Clients</a>
+    <a href="#about" style="color:#16233a">About</a>
+  </nav>
+  <div style="display:flex;gap:24px;align-items:center">
+    <a href="tel:01909488694" style="font-weight:600;font-size:15px;color:#16233a;letter-spacing:.01em">01909 488694</a>
+    <a href="#contact" style="background:#122e54;color:#ffffff;font-weight:600;padding:12px 26px;font-size:15px;white-space:nowrap" style-hover="background:#1d4478;color:#ffffff">Get a quote</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="background:#0e2138;color:#ffffff;padding:0 56px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;min-height:620px;padding:72px 0">
+    <div>
+      <div style="font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#7f9cc4;margin-bottom:28px">Plastering &amp; Drylining Contractors</div>
+      <h1 style="font-weight:700;font-size:56px;line-height:1.06;letter-spacing:-0.025em;margin:0 0 28px;text-wrap:pretty">The finish your programme depends on.</h1>
+      <p style="font-size:18px;line-height:1.65;color:#b6c5da;margin:0 0 40px;max-width:52ch;font-weight:400">Camm Plastering Contractors delivers full plastering, drylining, rendering and screeding packages for national housebuilders, main contractors and private clients across Yorkshire and the Midlands.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="#contact" style="background:#ffffff;color:#122e54;font-weight:600;padding:16px 34px;font-size:16px" style-hover="background:#d9e2ef;color:#122e54">Price your programme</a>
+        <a href="#services" style="border:1px solid #46608a;color:#ffffff;font-weight:600;padding:15px 34px;font-size:16px" style-hover="border-color:#ffffff;color:#ffffff">Our services</a>
+      </div>
+    </div>
+    <div style="position:relative;height:480px">
+      <!-- GEMINI PROMPT (hero): "Professional photograph inside a UK new-build house under construction: a plasterer in work trousers and t-shirt skimming a wall with a trowel, freshly plastered smooth pink-brown walls, natural window light, shallow depth of field, realistic documentary style, no text or logos, landscape orientation" -->
+      <image-slot id="hero" src="assets/hero.jpg" shape="rect" placeholder="Drop hero photo — Gemini prompt is in the HTML comment above this slot"></image-slot>
+      <div style="position:absolute;left:-1px;bottom:-1px;background:#0e2138;color:#7f9cc4;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:12px 20px 0 0;pointer-events:none">Worksop · Est. with decades on the tools</div>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ showConfirmNotes }}" hint-placeholder-val="{{ true }}">
+  <div style="background:#fdf1f1;border-bottom:1px solid #f0caca;padding:12px 56px;color:#a12626;font-size:14px;font-weight:500">
+    <div style="max-width:1200px;margin:0 auto">TO CONFIRM — year Grundy &amp; Camm started (for the "decades on the tools" line), insurance cover level, and the full client list. For the client marquee, send official logo files (transparent PNG, landscape) — AI-generated versions of real company logos won't look right. Gemini prompts for the hero and service photos are in HTML comments next to each image slot. This bar won't appear on the live site.</div>
+  </div>
+</sc-if>
+
+<!-- INTRO / ABOUT -->
+<section id="about" style="padding:104px 56px 88px;background:#ffffff">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start">
+    <h2 style="font-weight:700;font-size:38px;line-height:1.15;letter-spacing:-0.02em;margin:0;color:#16233a;text-wrap:pretty">One subcontractor. The whole internal and external finishing package.</h2>
+    <div style="font-size:17px;line-height:1.75;color:#44506a;display:grid;gap:20px">
+      <p style="margin:0">From first-fix boarding to final skim, Camm Plastering runs the full package under one contract — gangs scaled to your build programme, materials called off to suit, and plots handed over ready for decoration.</p>
+      <p style="margin:0">We price labour-only or supply-and-fix, we say what we'll do and we do it. That's why housebuilders keep us on site after site.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — alternating rows -->
+<section id="services" style="padding:88px 56px;background:#f6f5f2">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#1d4478;margin-bottom:14px">Services</div>
+    <h2 style="font-weight:700;font-size:40px;letter-spacing:-0.02em;margin:0 0 72px;color:#16233a">What we do</h2>
+
+    <div style="display:grid;gap:88px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div style="height:380px"><!-- GEMINI PROMPT (plastering): "Close-up photograph of a plasterer's stainless steel trowel smoothing wet finish plaster on an interior wall, smooth pink-brown plaster surface, soft natural light from a window, realistic UK building site, no text, landscape orientation" -->
+        <image-slot id="svc-plastering" src="assets/svc-plastering.jpg" shape="rect" placeholder="Drop photo — Gemini prompt in HTML comment above"></image-slot></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8a93a6;margin-bottom:14px">01</div>
+          <h3 style="font-weight:700;font-size:30px;letter-spacing:-0.015em;margin:0 0 16px;color:#16233a">Plastering &amp; skimming</h3>
+          <p style="font-size:16.5px;line-height:1.7;color:#44506a;margin:0 0 20px">Two-coat work and skim finishes across full plots, refurbishments and one-off rooms. Flat, snag-free walls and ceilings, ready for decoration — first time.</p>
+          <div style="font-size:15px;color:#44506a;line-height:2">Hardwall &amp; multi-finish · Re-skims over existing · Ceilings &amp; Artex removal</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8a93a6;margin-bottom:14px">02</div>
+          <h3 style="font-weight:700;font-size:30px;letter-spacing:-0.015em;margin:0 0 16px;color:#16233a">Drylining &amp; plasterboard</h3>
+          <p style="font-size:16.5px;line-height:1.7;color:#44506a;margin:0 0 20px">Dot and dab, metal stud partitions and full first-fix boarding packages. Tape and joint or skim finish to suit your specification and programme.</p>
+          <div style="font-size:15px;color:#44506a;line-height:2">Dot &amp; dab · Metal stud systems · Tape &amp; joint · Acoustic &amp; fire-rated boards</div>
+        </div>
+        <div style="height:380px"><!-- GEMINI PROMPT (drylining): "Photograph of a UK new-build interior mid-construction: walls lined with fresh grey plasterboard, taped and jointed seams, metal stud partition visible, bright work-light illumination, tidy site, realistic documentary style, no people, no text, landscape orientation" -->
+        <image-slot id="svc-drylining" src="assets/svc-drylining.jpg" shape="rect" placeholder="Drop photo — Gemini prompt in HTML comment above"></image-slot></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+        <div style="height:380px"><!-- GEMINI PROMPT (rendering): "Photograph of the exterior of a modern UK new-build house with a freshly applied smooth off-white through-coloured render finish, scaffolding partially visible at one side, overcast daylight, realistic documentary style, no text or logos, landscape orientation" -->
+        <image-slot id="svc-render" src="assets/svc-rendering.jpg" shape="rect" placeholder="Drop photo — Gemini prompt in HTML comment above"></image-slot></div>
+        <div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8a93a6;margin-bottom:14px">03</div>
+          <h3 style="font-weight:700;font-size:30px;letter-spacing:-0.015em;margin:0 0 16px;color:#16233a">Rendering &amp; external finishes</h3>
+          <p style="font-size:16.5px;line-height:1.7;color:#44506a;margin:0 0 20px">Traditional sand-and-cement and modern through-coloured render systems on new-build and refurbishment elevations, plus external wall insulation installs.</p>
+          <div style="font-size:15px;color:#44506a;line-height:2">Through-coloured systems · Sand &amp; cement · External wall insulation</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ddd9d0;border:1px solid #ddd9d0;margin-top:88px">
+      <sc-for list="{{ extraServices }}" as="sv" hint-placeholder-count="3">
+        <div style="background:#ffffff;padding:32px">
+          <h3 style="font-weight:700;font-size:19px;letter-spacing:-0.01em;margin:0 0 10px;color:#16233a">{{ sv.name }}</h3>
+          <p style="font-size:15px;line-height:1.65;color:#44506a;margin:0">{{ sv.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors" style="padding:104px 56px;background:#ffffff">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#1d4478;margin-bottom:14px">Sectors</div>
+    <h2 style="font-weight:700;font-size:40px;letter-spacing:-0.02em;margin:0 0 56px;color:#16233a">Where we work</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px">
+      <sc-for list="{{ sectors }}" as="sec" hint-placeholder-count="4">
+        <div style="border-top:1px solid #16233a;padding-top:24px">
+          <h3 style="font-weight:700;font-size:20px;letter-spacing:-0.01em;margin:0 0 12px;color:#16233a">{{ sec.name }}</h3>
+          <p style="font-size:15px;line-height:1.65;color:#44506a;margin:0">{{ sec.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" style="padding:96px 0;background:#0e2138;color:#ffffff;overflow:hidden">
+  <div style="max-width:1200px;margin:0 auto;padding:0 56px;text-align:center">
+    <div style="font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#7f9cc4;margin-bottom:14px">Clients</div>
+    <h2 style="font-weight:700;font-size:38px;letter-spacing:-0.02em;line-height:1.15;margin:0 0 20px;text-wrap:pretty">Trusted by national housebuilders</h2>
+    <p style="color:#b6c5da;font-size:16.5px;line-height:1.7;margin:0 auto 56px;max-width:56ch">Long-standing subcontract relationships, built on hitting programme dates and clean handovers.</p>
+  </div>
+  <!-- Client logo marquee. Each tile shows assets/clients/<slug>.png when supplied; until then the company wordmark. Logos should be the companies' OFFICIAL brand files (PNG, transparent or white background, landscape lockup, ≥400px wide) — AI-generated versions of real trademarks won't pass. -->
+  <div style="overflow:hidden;width:100%">
+    <div style="display:flex;gap:16px;width:max-content;animation:camm-marquee 32s linear infinite;padding-left:16px">
+      <sc-for list="{{ marquee }}" as="cl" hint-placeholder-count="8">
+        <div style="background:#ffffff;height:104px;min-width:240px;display:flex;align-items:center;justify-content:center;padding:0 40px;flex-shrink:0">
+          <span style="font-weight:700;font-size:21px;letter-spacing:-0.01em;color:#122e54;white-space:nowrap">{{ cl.name }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE — single quiet mention -->
+<section style="padding:72px 56px;background:#ffffff;border-bottom:1px solid #e8eaef">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap">
+    <p style="font-size:16px;color:#44506a;margin:0;max-width:56ch;line-height:1.7">CHAS accredited, SSIP registered and fully insured, with a CSCS-carded workforce working to NHBC standards. RAMS supplied per plot or per package.</p>
+    <div style="display:flex;gap:36px;font-weight:700;font-size:17px;color:#8a93a6;letter-spacing:.04em">
+      <span>CHAS</span><span>SSIP</span><span>CSCS</span><span>NHBC</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:104px 56px;background:#f6f5f2">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start">
+    <div>
+      <div style="font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#1d4478;margin-bottom:14px">Contact</div>
+      <h2 style="font-weight:700;font-size:40px;letter-spacing:-0.02em;line-height:1.12;margin:0 0 20px;color:#16233a">Got a package to price?</h2>
+      <p style="color:#44506a;font-size:16.5px;line-height:1.7;margin:0 0 40px;max-width:44ch">Send drawings and programme dates, or ring Ian direct. Quotes back fast.</p>
+      <div style="display:grid;gap:24px;font-size:16px">
+        <div>
+          <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8a93a6;margin-bottom:6px">Phone</div>
+          <a href="tel:01909488694" style="font-weight:700;font-size:24px;letter-spacing:-0.01em;color:#16233a">01909 488694</a>
+        </div>
+        <div>
+          <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8a93a6;margin-bottom:6px">Email</div>
+          <a href="mailto:cammplastering@gmail.com" style="font-weight:600;font-size:18px;color:#16233a">cammplastering@gmail.com</a>
+        </div>
+        <div>
+          <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8a93a6;margin-bottom:6px">Coverage</div>
+          <div style="color:#44506a;line-height:1.6">Based in Worksop — covering South Yorkshire,<br>Derbyshire, Nottinghamshire &amp; surrounding regions.</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#ffffff;border:1px solid #e2ddd3;padding:44px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <label style="display:grid;gap:8px;font-size:13.5px;font-weight:600;color:#16233a">Name
+          <input value="{{ fName }}" onChange="{{ setName }}" placeholder="Your name" style="font-family:'Archivo';font-size:15.5px;padding:13px 14px;border:1px solid #d4d8e0;background:#ffffff;color:#16233a;outline-color:#1d4478">
+        </label>
+        <label style="display:grid;gap:8px;font-size:13.5px;font-weight:600;color:#16233a">Company
+          <input value="{{ fCompany }}" onChange="{{ setCompany }}" placeholder="Company (optional)" style="font-family:'Archivo';font-size:15.5px;padding:13px 14px;border:1px solid #d4d8e0;background:#ffffff;color:#16233a;outline-color:#1d4478">
+        </label>
+        <label style="display:grid;gap:8px;font-size:13.5px;font-weight:600;color:#16233a">Phone
+          <input value="{{ fPhone }}" onChange="{{ setPhone }}" placeholder="Contact number" style="font-family:'Archivo';font-size:15.5px;padding:13px 14px;border:1px solid #d4d8e0;background:#ffffff;color:#16233a;outline-color:#1d4478">
+        </label>
+        <label style="display:grid;gap:8px;font-size:13.5px;font-weight:600;color:#16233a">Email
+          <input value="{{ fEmail }}" onChange="{{ setEmail }}" placeholder="Email address" style="font-family:'Archivo';font-size:15.5px;padding:13px 14px;border:1px solid #d4d8e0;background:#ffffff;color:#16233a;outline-color:#1d4478">
+        </label>
+      </div>
+      <label style="display:grid;gap:8px;font-size:13.5px;font-weight:600;color:#16233a;margin-top:20px">About the job
+        <textarea value="{{ fMessage }}" onChange="{{ setMessage }}" rows="5" placeholder="Site location, package, programme dates — whatever you have" style="font-family:'Archivo';font-size:15.5px;padding:13px 14px;border:1px solid #d4d8e0;background:#ffffff;color:#16233a;outline-color:#1d4478;resize:vertical"></textarea>
+      </label>
+      <button onClick="{{ sendEnquiry }}" style="margin-top:28px;background:#122e54;color:#ffffff;font-family:'Archivo';font-weight:600;font-size:16px;padding:16px 36px;border:none;cursor:pointer;width:100%" style-hover="background:#1d4478">Send enquiry</button>
+      <div style="font-size:13px;color:#8a93a6;margin-top:12px;text-align:center">Opens your email app addressed to cammplastering@gmail.com</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0a1a2c;color:#7285a0;padding:32px 56px;font-size:13.5px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <span>© 2026 Camm Plastering Contractors Ltd</span>
+    <span>Registered in England &amp; Wales No. 14195073 · 6c Gander Lane, Barlborough, Chesterfield S43 4PZ</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showConfirmNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { name: '', company: '', phone: '', email: '', message: '' };
+  renderVals() {
+    const set = (k) => (e) => this.setState({ [k]: e.target.value });
+    return {
+      showConfirmNotes: this.props.showConfirmNotes ?? true,
+      fName: this.state.name, setName: set('name'),
+      fCompany: this.state.company, setCompany: set('company'),
+      fPhone: this.state.phone, setPhone: set('phone'),
+      fEmail: this.state.email, setEmail: set('email'),
+      fMessage: this.state.message, setMessage: set('message'),
+      sendEnquiry: () => {
+        const s = this.state;
+        const subject = encodeURIComponent(`Enquiry from ${s.name || 'website'}${s.company ? ' — ' + s.company : ''}`);
+        const body = encodeURIComponent(
+          `Name: ${s.name}\nCompany: ${s.company}\nPhone: ${s.phone}\nEmail: ${s.email}\n\n${s.message}`);
+        window.location.href = `mailto:cammplastering@gmail.com?subject=${subject}&body=${body}`;
+      },
+      extraServices: [
+        { name: 'Screeding', desc: 'Sand and cement floor screeds laid to level and on programme, ready for floor finishes.' },
+        { name: 'External wall insulation', desc: 'EWI systems installed and finished — thermal upgrades for refurb and new-build alike.' },
+        { name: 'Coving & mouldings', desc: 'Clean, straight coving and decorative mouldings, as part of the package or standalone.' },
+      ],
+      sectors: [
+        { name: 'New-build housing', desc: 'Subcontract packages for national housebuilders — full sites and phased plots, on programme.' },
+        { name: 'Commercial', desc: 'Drylining and plastering packages for main contractors on commercial and industrial builds.' },
+        { name: 'Domestic', desc: 'Private homeowner work — re-skims, renovations and extensions, done tidy and on time.' },
+        { name: 'Insurance & refurb', desc: 'Reinstatement and refurbishment plastering for insurers, landlords and housing providers.' },
+      ],
+      marquee: (() => {
+        const base = [
+          { name: 'Harron Homes', slug: 'harron-homes' },
+          { name: 'Avant Homes', slug: 'avant-homes' },
+          { name: 'Client TBC', slug: 'client-3' },
+          { name: 'Client TBC', slug: 'client-4' },
+          { name: 'Client TBC', slug: 'client-5' },
+          { name: 'Client TBC', slug: 'client-6' },
+        ];
+        return [...base, ...base]; // duplicated so the loop is seamless
+      })(),
+    };
+  }
+}
+</script>
+</body>
+</html>

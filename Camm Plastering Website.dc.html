@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Barlow', sans-serif; color: #17233a; background: #ffffff; }
+  a { color: #24508f; text-decoration: none; }
+  a:hover { color: #16345e; }
+</style>
+</helmet>
+
+<!-- TOP BAR -->
+<div style="background:#16345e;color:#cdd9ec;font-size:14px;display:flex;justify-content:space-between;align-items:center;padding:8px 48px;gap:16px;flex-wrap:wrap">
+  <div style="display:flex;gap:24px;align-items:center">
+    <span>CSCS-carded workforce</span><span style="opacity:.4">|</span><span>CHAS accredited</span><span style="opacity:.4">|</span><span>Fully insured</span>
+  </div>
+  <div style="display:flex;gap:24px;align-items:center;font-weight:600">
+    <a href="tel:01909488694" style="color:#ffffff">01909 488694</a>
+    <a href="mailto:cammplastering@gmail.com" style="color:#ffffff">cammplastering@gmail.com</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header style="position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #e3e7ee;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;gap:24px">
+  <a href="#top" style="display:flex;align-items:center"><img src="assets/camm-logo.png" alt="Camm Plastering Contractors Ltd" style="height:56px;display:block"></a>
+  <nav style="display:flex;gap:32px;align-items:center;font-weight:600;font-size:15px">
+    <a href="#services" style="color:#17233a">Services</a>
+    <a href="#sectors" style="color:#17233a">Sectors</a>
+    <a href="#clients" style="color:#17233a">Who we work with</a>
+    <a href="#projects" style="color:#17233a">Our work</a>
+    <a href="#contact" style="color:#17233a">Contact</a>
+  </nav>
+  <a href="#contact" style="background:#24508f;color:#ffffff;font-weight:700;padding:12px 24px;border-radius:4px;font-size:15px;white-space:nowrap" style-hover="background:#16345e;color:#ffffff">Get a quote</a>
+</header>
+
+<!-- HERO -->
+<section id="top" style="background:linear-gradient(160deg,#16345e 0%,#1e4275 60%,#24508f 100%);color:#ffffff;padding:96px 48px 72px">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center">
+    <div>
+      <div style="font-family:'Barlow Condensed';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9db8dd;font-size:16px;margin-bottom:16px">Plastering &amp; drylining contractors — Worksop, serving Yorkshire &amp; the Midlands</div>
+      <h1 style="font-family:'Barlow Condensed';font-weight:700;font-size:64px;line-height:1.02;margin:0 0 24px;text-wrap:pretty">Plots turned around on programme. Finished right, first time.</h1>
+      <p style="font-size:19px;line-height:1.55;color:#d7e2f2;margin:0 0 36px;max-width:56ch">Camm Plastering Contractors Ltd delivers plastering, drylining, rendering and screeding for national housebuilders, main contractors and private clients. Labour-only or supply-and-fix — priced straight, snag-free handovers.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="#contact" style="background:#ffffff;color:#16345e;font-weight:700;padding:16px 32px;border-radius:4px;font-size:17px" style-hover="background:#d7e2f2;color:#16345e">Price your programme</a>
+        <a href="#services" style="border:2px solid #5f81b4;color:#ffffff;font-weight:700;padding:14px 32px;border-radius:4px;font-size:17px" style-hover="border-color:#ffffff;color:#ffffff">What we do</a>
+      </div>
+    </div>
+    <div style="display:grid;gap:14px">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:20px 24px">
+          <div style="font-family:'Barlow Condensed';font-weight:700;font-size:38px;line-height:1">{{ s.big }}</div>
+          <div style="color:#b9cbe6;font-size:15px;margin-top:6px">{{ s.small }}</div>
+        </div>
+      </sc-for>
+      <sc-if value="{{ showConfirmNotes }}" hint-placeholder-val="{{ true }}">
+        <div style="border:2px dashed #e05252;background:rgba(224,82,82,.12);border-radius:6px;padding:14px 18px;color:#ffb3b3;font-size:14px;font-weight:600">TO CONFIRM: year Grundy &amp; Camm started — drives the "years on the tools" figure above. Tell me the year and I'll update it.</div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- ACCREDITATION STRIP -->
+<div style="background:#f4f2ee;border-bottom:1px solid #e6e2da;padding:18px 48px">
+  <div style="max-width:1160px;margin:0 auto;display:flex;gap:40px;align-items:center;justify-content:center;flex-wrap:wrap;font-family:'Barlow Condensed';font-weight:600;font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:#4d5a72">
+    <sc-for list="{{ badges }}" as="b" hint-placeholder-count="5">
+      <span style="display:flex;align-items:center;gap:10px;color:#4d5a72"><span style="width:8px;height:8px;background:#24508f;transform:rotate(45deg);display:inline-block"></span>{{ b }}</span>
+    </sc-for>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="padding:88px 48px;background:#ffffff">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="font-family:'Barlow Condensed';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#24508f;font-size:16px;margin-bottom:10px">Services</div>
+    <h2 style="font-family:'Barlow Condensed';font-weight:700;font-size:44px;margin:0 0 12px;color:#17233a">Full internal &amp; external package</h2>
+    <p style="color:#4d5a72;font-size:17px;max-width:64ch;margin:0 0 44px;line-height:1.6">One subcontractor for the lot — from first fix boarding to final skim. Gangs scaled to your build programme, materials on site when you need them.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ services }}" as="sv" hint-placeholder-count="6">
+        <div style="border:1px solid #e3e7ee;border-radius:6px;padding:28px;background:#ffffff" style-hover="border-color:#24508f;box-shadow:0 4px 16px rgba(22,52,94,.08)">
+          <div style="font-family:'Barlow Condensed';font-weight:700;font-size:24px;color:#16345e;margin-bottom:10px">{{ sv.name }}</div>
+          <div style="color:#4d5a72;font-size:15.5px;line-height:1.6">{{ sv.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors" style="padding:88px 48px;background:#f4f2ee">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="font-family:'Barlow Condensed';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#24508f;font-size:16px;margin-bottom:10px">Sectors</div>
+    <h2 style="font-family:'Barlow Condensed';font-weight:700;font-size:44px;margin:0 0 44px;color:#17233a">Where we work</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <sc-for list="{{ sectors }}" as="sec" hint-placeholder-count="4">
+        <div style="background:#ffffff;border-radius:6px;padding:28px;border-top:4px solid #24508f">
+          <div style="font-family:'Barlow Condensed';font-weight:700;font-size:22px;color:#16345e;margin-bottom:10px">{{ sec.name }}</div>
+          <div style="color:#4d5a72;font-size:15px;line-height:1.6">{{ sec.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients" style="padding:88px 48px;background:#16345e;color:#ffffff">
+  <div style="max-width:1160px;margin:0 auto;text-align:center">
+    <div style="font-family:'Barlow Condensed';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9db8dd;font-size:16px;margin-bottom:10px">Who we work with</div>
+    <h2 style="font-family:'Barlow Condensed';font-weight:700;font-size:44px;margin:0 0 16px">Trusted by national housebuilders</h2>
+    <p style="color:#b9cbe6;font-size:17px;max-width:60ch;margin:0 auto 44px;line-height:1.6">Long-standing subcontract relationships built on hitting programme dates and clean CML handovers.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <sc-for list="{{ clients }}" as="cl" hint-placeholder-count="6">
+        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:22px 36px;font-family:'Barlow Condensed';font-weight:700;font-size:24px;letter-spacing:.04em;min-width:180px">{{ cl }}</div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ showConfirmNotes }}" hint-placeholder-val="{{ true }}">
+      <div style="border:2px dashed #e05252;background:rgba(224,82,82,.12);border-radius:6px;padding:14px 18px;color:#ffb3b3;font-size:14px;font-weight:600;max-width:640px;margin:32px auto 0">TO CONFIRM: full client list — send me the rest of the companies and I'll add them here (logos too, if you can get them).</div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="padding:88px 48px;background:#ffffff">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="font-family:'Barlow Condensed';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#24508f;font-size:16px;margin-bottom:10px">Our work</div>
+    <h2 style="font-family:'Barlow Condensed';font-weight:700;font-size:44px;margin:0 0 12px;color:#17233a">Recent sites</h2>
+    <p style="color:#4d5a72;font-size:17px;max-width:64ch;margin:0 0 44px;line-height:1.6">Drag photos of finished plots straight onto the tiles below — boards up, skim finished, rendered elevations, screeded floors.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div style="height:280px"><image-slot id="proj1" shape="rounded" radius="6" placeholder="Drop a site photo — e.g. new-build skim finish"></image-slot></div>
+      <div style="height:280px"><image-slot id="proj2" shape="rounded" radius="6" placeholder="Drop a site photo — e.g. drylining / boarding"></image-slot></div>
+      <div style="height:280px"><image-slot id="proj3" shape="rounded" radius="6" placeholder="Drop a site photo — e.g. rendered elevation"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCREDITATIONS -->
+<section style="padding:88px 48px;background:#f4f2ee">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+    <div>
+      <div style="font-family:'Barlow Condensed';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#24508f;font-size:16px;margin-bottom:10px">Compliance</div>
+      <h2 style="font-family:'Barlow Condensed';font-weight:700;font-size:44px;margin:0 0 16px;color:#17233a">Accredited, carded, covered</h2>
+      <p style="color:#4d5a72;font-size:17px;line-height:1.65;margin:0">Every operative holds a valid CSCS card. The business is CHAS accredited, SSIP Worksafe registered, works to NHBC standards and carries full public and employer's liability insurance. RAMS supplied per plot or per package.</p>
+      <sc-if value="{{ showConfirmNotes }}" hint-placeholder-val="{{ true }}">
+        <div style="border:2px dashed #c73e3e;background:#fbe9e9;border-radius:6px;padding:14px 18px;color:#a12626;font-size:14px;font-weight:600;margin-top:24px">TO CONFIRM: insurance cover level (£5m/£10m?), any other accreditations (Constructionline, SMAS?), NHBC registration details. Send these over and I'll slot them in.</div>
+      </sc-if>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <sc-for list="{{ accreds }}" as="ac" hint-placeholder-count="4">
+        <div style="background:#ffffff;border-radius:6px;padding:24px;text-align:center;border:1px solid #e6e2da">
+          <div style="font-family:'Barlow Condensed';font-weight:700;font-size:26px;color:#16345e">{{ ac.name }}</div>
+          <div style="color:#4d5a72;font-size:14px;margin-top:6px">{{ ac.sub }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:88px 48px;background:#16345e;color:#ffffff">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+    <div>
+      <div style="font-family:'Barlow Condensed';font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9db8dd;font-size:16px;margin-bottom:10px">Contact</div>
+      <h2 style="font-family:'Barlow Condensed';font-weight:700;font-size:48px;margin:0 0 16px">Got a package to price?</h2>
+      <p style="color:#b9cbe6;font-size:17px;line-height:1.6;margin:0;max-width:50ch">Send drawings and programme dates over, or ring Ian direct. Quotes back fast, no messing about.</p>
+    </div>
+    <div style="display:grid;gap:14px">
+      <a href="tel:01909488694" style="background:#ffffff;color:#16345e;border-radius:6px;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:24px;font-family:'Barlow Condensed'" style-hover="background:#d7e2f2;color:#16345e"><span>01909 488694</span><span style="font-family:'Barlow';font-size:14px;font-weight:600;color:#4d5a72">Ian Camm, Managing Director</span></a>
+      <a href="mailto:cammplastering@gmail.com" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#ffffff;border-radius:6px;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:20px;font-family:'Barlow Condensed'" style-hover="background:rgba(255,255,255,.14);color:#ffffff"><span>cammplastering@gmail.com</span><span style="font-family:'Barlow';font-size:14px;font-weight:600;color:#9db8dd">Email us</span></a>
+      <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:24px 28px;font-size:15px;color:#d7e2f2;line-height:1.6">Based in Worksop, Nottinghamshire.<br>Covering South Yorkshire, Derbyshire, Nottinghamshire &amp; surrounding regions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0f2440;color:#8fa5c4;padding:28px 48px;font-size:13.5px">
+  <div style="max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <span>© 2026 Camm Plastering Contractors Ltd. All rights reserved.</span>
+    <span>Registered in England &amp; Wales No. 14195073 · Registered office: 6c Gander Lane, Barlborough, Chesterfield S43 4PZ</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showConfirmNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showConfirmNotes: this.props.showConfirmNotes ?? true,
+      stats: [
+        { big: '20+ years', small: 'On the tools — year to confirm' },
+        { big: '100%', small: 'CSCS-carded workforce' },
+        { big: 'Labour-only or supply-&-fix', small: 'Packages priced either way' },
+      ],
+      badges: ['CSCS', 'CHAS Accredited', 'SSIP Worksafe Contractor', 'NHBC Standards', 'Fully Insured'],
+      services: [
+        { name: 'Plastering & skimming', desc: 'Two-coat and skim finishes across full plots and refurbs. Flat, snag-free walls and ceilings ready for decoration.' },
+        { name: 'Drylining & plasterboard', desc: 'Dot and dab, metal stud and full first-fix boarding. Tape and joint or skim finish to suit spec.' },
+        { name: 'Rendering', desc: 'Traditional sand and cement plus modern through-coloured render systems on new-build and refurb elevations.' },
+        { name: 'Screeding', desc: 'Sand and cement floor screeds laid to level and on programme, ready for floor finishes.' },
+        { name: 'External wall insulation', desc: 'EWI systems installed and finished — thermal upgrades for refurbishment and new-build alike.' },
+        { name: 'Coving & mouldings', desc: 'Clean, straight coving and decorative mouldings fitted as part of the package or standalone.' },
+      ],
+      sectors: [
+        { name: 'New-build housing', desc: 'Subcontract packages for national housebuilders — full sites, phased plots, hit the build programme every time.' },
+        { name: 'Commercial', desc: 'Drylining and plastering packages for main contractors on commercial and industrial builds.' },
+        { name: 'Domestic', desc: 'Private homeowner work — re-skims, renovations and extensions, done tidy and on time.' },
+        { name: 'Insurance & refurb', desc: 'Reinstatement and refurbishment plastering for insurers, landlords and housing providers.' },
+      ],
+      clients: ['Harron Homes', 'Avant Homes', 'Your logo here', 'Your logo here', 'Your logo here', 'Your logo here'],
+      accreds: [
+        { name: 'CHAS', sub: 'Accredited contractor' },
+        { name: 'CSCS', sub: 'Carded workforce' },
+        { name: 'SSIP', sub: 'Worksafe contractor' },
+        { name: 'NHBC', sub: 'Working to NHBC standards' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

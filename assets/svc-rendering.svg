@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="skyBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="renderWall" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="800" height="220" fill="url(#skyBg)"/>
+  
+  <!-- Modern House Elevation with Smooth Off-White Render -->
+  <polygon points="120,220 400,80 680,220" fill="#334155"/> <!-- Roof gable -->
+  <rect x="150" y="220" width="500" height="380" fill="url(#renderWall)" stroke="#cbd5e1" stroke-width="2"/>
+  
+  <!-- Windows -->
+  <rect x="200" y="270" width="120" height="100" fill="#1e293b" stroke="#ffffff" stroke-width="6"/>
+  <rect x="480" y="270" width="120" height="100" fill="#1e293b" stroke="#ffffff" stroke-width="6"/>
+  <rect x="340" y="440" width="120" height="160" fill="#0f172a" stroke="#ffffff" stroke-width="6"/>
+
+  <!-- Scaffolding Frame at Left Side -->
+  <g stroke="#f59e0b" stroke-width="6" opacity="0.85">
+    <line x1="80" y1="120" x2="80" y2="600"/>
+    <line x1="180" y1="120" x2="180" y2="600"/>
+    <line x1="60" y1="200" x2="200" y2="200" stroke="#d97706" stroke-width="10"/>
+    <line x1="60" y1="360" x2="200" y2="360" stroke="#d97706" stroke-width="10"/>
+    <line x1="60" y1="520" x2="200" y2="520" stroke="#d97706" stroke-width="10"/>
+    <line x1="80" y1="200" x2="180" y2="360"/>
+    <line x1="80" y1="360" x2="180" y2="520"/>
+  </g>
+</svg>
