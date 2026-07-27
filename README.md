@@ -1,8 +1,8 @@
 # Camm Plastering Contractors Ltd — website
 
-Marketing site for **Camm Plastering Contractors Ltd**, a plastering, drylining, rendering
-and screeding subcontractor based in Worksop, covering South Yorkshire, Derbyshire and
-Nottinghamshire.
+Marketing site for **Camm Plastering Contractors Ltd**, a plastering, drylining and
+rendering subcontractor established over 30 years, based in Worksop, covering South
+Yorkshire, Derbyshire and Nottinghamshire.
 
 **Live preview:** https://cammycodes.github.io/cammPlasteringWebsite/
 
@@ -78,12 +78,17 @@ Carried over from the design notes in the source:
   `scraps/generate_svg_assets.js`, not the company's actual logo file. **The original is
   preserved at `assets/camm-logo.png.bak`** — restore it with
   `cp assets/camm-logo.png.bak assets/camm-logo.png` if the real mark is wanted.
-- **Client logos** — the marquee renders company names as text, and four of the six entries
-  are "Client TBC". Needs the official logo files (transparent PNG, landscape, ≥400px wide)
-  and the confirmed client list. Per the note in the source, these must be the companies'
-  real brand files — redrawn versions of someone else's trademark aren't usable.
-- **Copy to confirm** — the year the business started (the hero says "decades on the
-  tools"), the insurance cover level, and the full client list.
+- **"5,000+ plots completed" is an assumption, not a supplied figure.** It was chosen to sit
+  credibly against 30+ years of trading when the client asked for a larger number than the
+  previous "500+", but nobody has confirmed it. **It is a public factual claim about a real
+  business and needs signing off or replacing.**
+- **Client logos** — the static client row shows only the two confirmed logos (Harron Homes,
+  Avant Homes). The four "Client TBC" placeholder tiles were removed. To add a client, drop
+  the official brand file (transparent PNG or SVG, landscape, ≥400px wide) into
+  `assets/clients/` and add an entry to `clientLogos`. These must be the companies' real
+  brand files — redrawn versions of someone else's trademark aren't usable.
+- **Copy to confirm** — the insurance cover level (the compliance line currently says only
+  "fully insured") and the full client list.
 - **SEO** — client-side rendering means no server-rendered content. If organic search
   matters, the page should be flattened to static HTML.
 

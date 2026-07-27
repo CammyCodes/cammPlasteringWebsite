@@ -51,8 +51,16 @@ Template syntax:
 Gotchas:
 
 - All styling is **inline `style` attributes**. There is no stylesheet and no class system.
-  Match that — don't introduce CSS classes or a framework. Shared keyframes and resets go in
-  the `<style>` block inside `<helmet>`.
+  Match that — don't introduce CSS classes or a framework. Shared rules, responsive overrides
+  and resets go in the `<style>` block inside `<helmet>`; classes exist there purely as
+  media-query and shared-rule hooks, never as a general styling system.
+- The page is **`content-box`** — there is no `box-sizing` reset, and every dimension was
+  tuned that way. Don't add a global `border-box` reset; it would shift the whole layout.
+  Two consequences bite repeatedly: never put `width:100%` on a padded element, and give
+  grid tracks `minmax(0,1fr)` rather than `1fr` wherever a track holds an `<image-slot>` or
+  a form field, both of which impose an intrinsic minimum width that blows the track out.
+- Headings are **Source Serif 4**, everything else **Archivo**; the bronze `#b0885a` /
+  `#94703f` accent is reserved for hairlines, eyebrows and hover states.
 - The runtime pulls React 18.3.1, ReactDOM and Babel Standalone from **unpkg with SRI
   hashes**. Anything that breaks those requests breaks the page. Don't add a CSP.
 - Because it's client-rendered, **nothing is in the initial HTML**. Any change justified by
@@ -74,15 +82,21 @@ The images in there now (`hero.jpg`, `svc-*.jpg`) and `camm-logo.png` are **gene
 stand-ins** produced by `scraps/generate_svg_assets.js` and `scraps/convert_svg_to_png.js` —
 flat vector illustrations, not photographs, and a redrawn wordmark rather than the company's
 real logo (the original is kept at `assets/camm-logo.png.bak`). Treat them as placeholders.
-Do not generate stand-ins for *third-party* client logos in the marquee — those are other
+Do not generate stand-ins for *third-party* client logos in the client row — those are other
 companies' trademarks and the source explicitly rules that out.
 
 ## Content model
 
 Everything list-shaped lives in `renderVals()` at the bottom of the v2 source, not in the
-markup: `extraServices`, `sectors`, and `marquee`. `marquee` is deliberately returned as
-`[...base, ...base]` so the CSS marquee animation loops seamlessly — if you add a client,
-add it to `base` and leave the duplication alone.
+markup: `capabilities`, `sectors`, and `clientLogos`.
+
+`clientLogos` holds only confirmed clients that have supplied an official brand file. It is
+rendered as a static row, not a marquee — there are deliberately no "TBC" placeholders, since
+placeholder tiles on a live site undercut the established-contractor positioning the copy is
+doing. Add a client only when the real logo file exists in `assets/clients/`.
+
+The company does **not** offer screeding, external wall insulation, or coving and mouldings.
+These were removed in July 2026 at the client's instruction — don't reintroduce them.
 
 The contact form has no backend. `sendEnquiry` builds a `mailto:` URL and sets
 `window.location.href`. Don't add a form endpoint without asking — it changes where a real

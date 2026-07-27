@@ -7,9 +7,9 @@ const OUT = 'index.html';
 
 const TITLE = 'Camm Plastering Contractors Ltd — Plastering, Drylining & Rendering';
 const DESCRIPTION =
-  'Full plastering, drylining, rendering and screeding packages for national housebuilders, ' +
-  'main contractors and private clients across South Yorkshire, Derbyshire and Nottinghamshire. ' +
-  'Based in Worksop. CHAS accredited, SSIP registered, CSCS-carded.';
+  'Established over 30 years. Complete plastering, drylining and rendering packages for ' +
+  'national housebuilders, main contractors and private clients across South Yorkshire, ' +
+  'Derbyshire and Nottinghamshire. Based in Worksop. CHAS accredited, SSIP registered, CSCS-carded.';
 
 /** Replace `find` exactly once, or fail loudly so a source edit can't silently break the build. */
 function replaceOnce(html, find, replace, label) {
