@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "4173"],
       "port": 4173
+    },
+    {
+      "name": "logo-diff",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["C:\\Users\\Cammy\\AppData\\Local\\Temp\\claude\\Y--Github-cammPlasteringWebsite\\675886a1-6ddb-486d-bbde-9b06eefd072a\\scratchpad\\save_server.py"],
+      "port": 4188
     }
   ]
 }
