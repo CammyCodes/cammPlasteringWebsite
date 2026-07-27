@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <g fill="none" fill-rule="evenodd">
+    <!-- CHAS Outer Arc -->
+    <path d="M 65,15 A 35,35 0 1,0 65,65" stroke="#4b2875" stroke-width="9" stroke-linecap="round"/>
+    <text x="36" y="49" font-family="'Archivo', sans-serif" font-weight="800" font-size="28" fill="#4b2875" letter-spacing="-1">CHAS</text>
+    <!-- Text lockup -->
+    <text x="96" y="34" font-family="'Archivo', sans-serif" font-weight="700" font-size="16" fill="#16233a">ACCREDITED</text>
+    <text x="96" y="52" font-family="'Archivo', sans-serif" font-weight="600" font-size="13" fill="#64748b" letter-spacing="1.5">CONTRACTOR</text>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="220" height="80">
+  <g fill="none" fill-rule="evenodd">
+    <!-- CSCS Card Box -->
+    <rect x="8" y="16" width="60" height="48" rx="5" fill="#004b87"/>
+    <path d="M 8,40 L 68,40" stroke="#f37021" stroke-width="4"/>
+    <text x="13" y="34" font-family="'Archivo', sans-serif" font-weight="900" font-size="16" fill="#ffffff">CSCS</text>
+    <!-- Text -->
+    <text x="78" y="38" font-family="'Archivo', sans-serif" font-weight="800" font-size="20" fill="#004b87" letter-spacing="1">CSCS</text>
+    <text x="78" y="55" font-family="'Archivo', sans-serif" font-weight="600" font-size="11" fill="#64748b" letter-spacing="0.5">CARDED WORKFORCE</text>
+  </g>
+</svg>
