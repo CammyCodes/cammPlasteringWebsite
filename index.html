@@ -24,6 +24,15 @@
   a { color: #1d4478; text-decoration: none; }
   a:hover { color: #122e54; }
 
+  /* image-slot.js sets aspect-ratio:3/2 on its own :host. Combined with a definite height
+     that gives the element a min-content width of height x 1.5, which grid and flex tracks
+     are obliged to honour — 420px for the 280px-tall mobile hero box, wider than the phone
+     it has to fit in, which pushed the whole document sideways and left a white gutter down
+     the right of every section. Every slot on this page sits in a box that already sets an
+     explicit height, so the ratio is redundant; dropping it lets the box drive the size and
+     the slot's own .frame{overflow:hidden} crop the photo. */
+  image-slot { aspect-ratio: auto; min-width: 0; }
+
   @media (max-width: 900px) {
     html { scroll-padding-top: 122px; }
 
@@ -42,7 +51,8 @@
     /* The section clears the fixed header; the grid supplies the breathing room.
        Previously both did, leaving ~113px of empty navy above the headline. */
     #top { padding-top: 112px !important; }
-    .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; min-height: auto !important; padding: 40px 0 48px !important; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 40px !important; min-height: auto !important; padding: 40px 0 48px !important; }
+    .services-rows { grid-template-columns: minmax(0, 1fr) !important; }
     .hero-grid h1 { font-size: 34px !important; line-height: 1.12 !important; margin-bottom: 20px !important; }
     .hero-grid p { font-size: 16px !important; margin-bottom: 28px !important; }
     .hero-img-box { height: 280px !important; }
