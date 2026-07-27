@@ -89,6 +89,26 @@ Carried over from the design notes in the source:
   brand files — redrawn versions of someone else's trademark aren't usable.
 - **Copy to confirm** — the insurance cover level (the compliance line currently says only
   "fully insured") and the full client list.
+- **Accreditation logos are low resolution.** `chas.png` (212×154), `ssip.png` (220×144) and
+  `cscs.png` (276×275) were scraped from the schemes' public sites in 2026 at whatever size
+  those pages happened to serve — they were never meant to be source files, and it shows at
+  print quality: CSCS renders at roughly 6x pixel density, CHAS and SSIP at roughly 3x.
+  `nhbc.svg` has been replaced with NHBC's actual vector wordmark (extracted from the inline
+  SVG on nhbc.co.uk), which is now sharp at any size — the old `nhbc.png` and the AI-generated
+  `nhbc.svg` stand-in it replaced are no longer referenced.
+  For the other three, request current high-resolution assets directly from the membership
+  portal or member-services team for each scheme — that's the only reliable way to get an
+  official file rather than a screen-scraped one:
+    - **CHAS** — chas.co.uk only publishes tier-specific badges (Standard / Advanced / Elite,
+      currently PNG only). Confirm which tier the company holds before requesting a file —
+      shipping the wrong tier is a false accreditation claim, not just a quality issue.
+    - **SSIP** — ssip.org.uk's asset URLs from the original 2026 scrape now 404; the current
+      logo needs re-sourcing from the member portal or member-services team.
+    - **CSCS** — cscs.uk.com rebranded in 2025 ("CSCSUK_main_logo"), so today's official mark
+      differs from the badge in the current PNG. Re-source rather than re-scraping the old one.
+  Do not regenerate any of these as vector art by hand — they're third-party certification
+  marks, not this company's own brand assets, and a redrawn version isn't a usable substitute
+  for an official file.
 - **SEO** — client-side rendering means no server-rendered content. If organic search
   matters, the page should be flattened to static HTML.
 
