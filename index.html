@@ -16,16 +16,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <style>
-  html { scroll-behavior: smooth; }
+  /* scroll-padding-top keeps in-page anchor targets clear of the fixed header —
+     without it every nav link parks its section heading underneath the header. */
+  html { scroll-behavior: smooth; scroll-padding-top: 124px; }
   @keyframes camm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   body { margin: 0; font-family: 'Archivo', sans-serif; color: #16233a; background: #ffffff; -webkit-font-smoothing: antialiased; }
   a { color: #1d4478; text-decoration: none; }
   a:hover { color: #122e54; }
 
   @media (max-width: 900px) {
-    header.site-header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; z-index: 9999 !important; padding: 10px 16px !important; flex-wrap: wrap !important; justify-content: space-between !important; gap: 8px !important; }
+    html { scroll-padding-top: 122px; }
+
+    header.site-header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; padding: 10px 16px !important; flex-wrap: wrap !important; justify-content: space-between !important; gap: 8px !important; }
     header.site-header img { height: 42px !important; }
-    header.site-header nav { display: flex !important; width: 100% !important; order: 3 !important; gap: 14px !important; justify-content: space-around !important; padding-top: 8px !important; border-top: 1px solid #e8eaef !important; font-size: 13.5px !important; overflow-x: auto !important; }
+    header.site-header nav { display: flex !important; width: 100% !important; order: 3 !important; gap: 6px !important; justify-content: space-around !important; padding-top: 0 !important; border-top: 1px solid #e8eaef !important; font-size: 13.5px !important; overflow-x: auto !important; }
+    /* Padded so each nav link is a usable tap target rather than a 15px-tall line of text. */
+    header.site-header nav a { padding: 12px 6px !important; }
     header.site-header .header-cta { gap: 10px !important; }
     header.site-header .header-cta a:first-child { font-size: 13px !important; }
     header.site-header .header-cta a:last-child { padding: 8px 14px !important; font-size: 13px !important; }
@@ -33,7 +39,10 @@
     section { padding-left: 20px !important; padding-right: 20px !important; }
     #about, #services, #sectors, #contact { padding-top: 56px !important; padding-bottom: 56px !important; }
 
-    .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; min-height: auto !important; padding: 100px 0 40px !important; }
+    /* The section clears the fixed header; the grid supplies the breathing room.
+       Previously both did, leaving ~113px of empty navy above the headline. */
+    #top { padding-top: 112px !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; min-height: auto !important; padding: 40px 0 48px !important; }
     .hero-grid h1 { font-size: 34px !important; line-height: 1.12 !important; margin-bottom: 20px !important; }
     .hero-grid p { font-size: 16px !important; margin-bottom: 28px !important; }
     .hero-img-box { height: 280px !important; }
@@ -41,7 +50,10 @@
     .about-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
     .about-grid h2 { font-size: 26px !important; line-height: 1.2 !important; }
 
-    .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+    /* Kept 3-up: at 1fr 1fr the third tile is orphaned on its own row. */
+    .stats-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; }
+    .stats-grid > div { padding: 24px 12px !important; }
+    .stats-grid .stat-number { font-size: 32px !important; }
 
     .services-rows { gap: 48px !important; }
     .service-row { display: flex !important; flex-direction: column !important; gap: 24px !important; }
@@ -51,11 +63,27 @@
 
     .sectors-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
 
+    /* Section headings kept below the hero h1 — they were sitting at their 38-40px
+       desktop size while the h1 dropped to 30px. */
+    #services h2, #sectors h2, #clients h2, #contact h2 { font-size: 27px !important; line-height: 1.2 !important; }
+    #services h2 { margin-bottom: 40px !important; }
+    #sectors h2 { margin-bottom: 32px !important; }
+
+    /* Full-bleed marquee, heading inset to match every other section. */
+    #clients { padding: 56px 0 !important; }
+    .clients-head { padding-left: 20px !important; padding-right: 20px !important; }
+    .clients-head p { margin-bottom: 40px !important; }
+    .marquee-tile { min-width: 180px !important; height: 96px !important; padding: 0 20px !important; }
+
+    .compliance-section { padding-top: 48px !important; padding-bottom: 48px !important; }
     .compliance-box { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; }
+    .accred-logos-wrap { gap: 20px !important; }
 
     .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     .contact-form-box { padding: 24px 20px !important; }
     .form-inputs-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+    /* iOS Safari force-zooms the page on focus for any field under 16px. */
+    .contact-form-box input, .contact-form-box textarea { font-size: 16px !important; }
 
     footer.site-footer { padding: 32px 20px !important; }
     footer.site-footer > div { flex-direction: column !important; text-align: center !important; gap: 12px !important; }
@@ -63,20 +91,27 @@
 
   @media (max-width: 550px) {
     .stats-grid { grid-template-columns: 1fr !important; }
+    .stats-grid > div { padding: 24px 20px !important; }
+    .stats-grid .stat-number { font-size: 40px !important; }
     .sectors-grid { grid-template-columns: 1fr !important; }
     .hero-grid h1 { font-size: 30px !important; }
+    #services h2, #sectors h2, #clients h2, #contact h2 { font-size: 24px !important; }
   }
 </style>
 </helmet>
 
 <!-- HEADER -->
-<header class="site-header" style="position:fixed;top:0;left:0;right:0;width:100%;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #e8eaef;display:flex;align-items:center;justify-content:space-between;padding:10px 56px;gap:24px">
+<!-- No width:100% here — with left:0;right:0 it is redundant, and since the page is
+     content-box it made the header 112px wider than the viewport, pushing the
+     "Get a quote" button off the right edge of the screen at every width. -->
+<header class="site-header" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #e8eaef;display:flex;align-items:center;justify-content:space-between;padding:10px 56px;gap:24px">
   <a href="#top" style="display:flex;align-items:center"><img src="assets/camm-logo.svg" alt="Camm Plastering Contractors Ltd" style="height:88px;display:block"></a>
+  <!-- Order follows the order the sections appear down the page. -->
   <nav style="display:flex;gap:36px;align-items:center;font-weight:500;font-size:15px">
+    <a href="#about" style="color:#16233a">About</a>
     <a href="#services" style="color:#16233a">Services</a>
     <a href="#sectors" style="color:#16233a">Sectors</a>
     <a href="#clients" style="color:#16233a">Clients</a>
-    <a href="#about" style="color:#16233a">About</a>
   </nav>
   <div class="header-cta" style="display:flex;gap:24px;align-items:center">
     <a href="tel:01909488694" style="font-weight:600;font-size:15px;color:#16233a;letter-spacing:.01em">01909 488694</a>
@@ -86,7 +121,10 @@
 
 <!-- HERO -->
 <section id="top" style="background:#0e2138;color:#ffffff;padding:0 56px;padding-top:108px">
-  <div class="hero-grid" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;min-height:620px;padding:72px 0">
+  <!-- minmax(0,1fr), not 1fr: <image-slot> reports a min-content width from its 3:2
+       aspect-ratio, and a bare 1fr (= minmax(auto,1fr)) lets it take that width out of
+       the text column — the split was 408/720 at 1440px and 296/720 at 960px. -->
+  <div class="hero-grid" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;min-height:620px;padding:72px 0">
     <div>
       <div style="font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#7f9cc4;margin-bottom:28px">Plastering &amp; Drylining Contractors</div>
       <h1 style="font-weight:700;font-size:56px;line-height:1.06;letter-spacing:-0.025em;margin:0 0 28px;text-wrap:pretty">The finish your programme depends on.</h1>
@@ -149,7 +187,7 @@
     <h2 style="font-weight:700;font-size:40px;letter-spacing:-0.02em;margin:0 0 72px;color:#16233a">What we do</h2>
 
     <div class="services-rows" style="display:grid;gap:88px">
-      <div class="service-row" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div class="service-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center">
         <div class="service-img-box" style="height:380px"><!-- GEMINI PROMPT (plastering): "Close-up photograph of a plasterer's stainless steel trowel smoothing wet finish plaster on an interior wall, smooth pink-brown plaster surface, soft natural light from a window, realistic UK building site, no text, landscape orientation" -->
         <image-slot id="svc-plastering" src="assets/svc-plastering.jpg" shape="rect" placeholder="Drop photo — Gemini prompt in HTML comment above"></image-slot></div>
         <div class="service-text-box">
@@ -160,7 +198,7 @@
         </div>
       </div>
 
-      <div class="service-row" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div class="service-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center">
         <div class="service-text-box">
           <div style="font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8a93a6;margin-bottom:14px">02</div>
           <h3 style="font-weight:700;font-size:30px;letter-spacing:-0.015em;margin:0 0 16px;color:#16233a">Drylining &amp; plasterboard</h3>
@@ -171,7 +209,7 @@
         <image-slot id="svc-drylining" src="assets/svc-drylining.jpg" shape="rect" placeholder="Drop photo — Gemini prompt in HTML comment above"></image-slot></div>
       </div>
 
-      <div class="service-row" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div class="service-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center">
         <div class="service-img-box" style="height:380px"><!-- GEMINI PROMPT (rendering): "Photograph of the exterior of a modern UK new-build house with a freshly applied smooth off-white through-coloured render finish, scaffolding partially visible at one side, overcast daylight, realistic documentary style, no text or logos, landscape orientation" -->
         <image-slot id="svc-render" src="assets/svc-rendering.jpg" shape="rect" placeholder="Drop photo — Gemini prompt in HTML comment above"></image-slot></div>
         <div class="service-text-box">
@@ -212,7 +250,7 @@
 
 <!-- CLIENTS -->
 <section id="clients" style="padding:96px 0;background:#0e2138;color:#ffffff;overflow:hidden">
-  <div style="max-width:1200px;margin:0 auto;padding:0 56px;text-align:center">
+  <div class="clients-head" style="max-width:1200px;margin:0 auto;padding:0 56px;text-align:center">
     <div style="font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#7f9cc4;margin-bottom:14px">Clients</div>
     <h2 style="font-weight:700;font-size:38px;letter-spacing:-0.02em;line-height:1.15;margin:0 0 20px;text-wrap:pretty">Trusted by national housebuilders</h2>
     <p style="color:#b6c5da;font-size:16.5px;line-height:1.7;margin:0 auto 56px;max-width:56ch">Long-standing subcontract relationships, built on hitting programme dates and clean handovers.</p>
@@ -221,9 +259,9 @@
   <div style="overflow:hidden;width:100%">
     <div style="display:flex;gap:16px;width:max-content;animation:camm-marquee 32s linear infinite;padding-left:16px">
       <sc-for list="{{ marquee }}" as="cl" hint-placeholder-count="8">
-        <div style="height:120px;min-width:260px;display:flex;align-items:center;justify-content:center;padding:0 36px;flex-shrink:0">
+        <div class="marquee-tile" style="height:120px;min-width:260px;display:flex;align-items:center;justify-content:center;padding:0 36px;flex-shrink:0">
           <sc-if value="{{ cl.logo }}">
-            <img src="{{ cl.logo }}" alt="{{ cl.name }}" style="height:80px;max-width:260px;object-fit:contain;display:block">
+            <img src="{{ cl.logo }}" alt="{{ cl.name }}" style="height:72px;max-width:180px;object-fit:contain;display:block">
           </sc-if>
           <sc-if value="{{ !cl.logo }}">
             <span style="font-weight:700;font-size:22px;letter-spacing:-0.01em;color:#ffffff;opacity:0.75;white-space:nowrap">{{ cl.name }}</span>
@@ -235,7 +273,7 @@
 </section>
 
 <!-- COMPLIANCE — single quiet mention -->
-<section style="padding:72px 56px;background:#ffffff;border-bottom:1px solid #e8eaef">
+<section class="compliance-section" style="padding:72px 56px;background:#ffffff;border-bottom:1px solid #e8eaef">
   <div class="compliance-box" style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap">
     <p style="font-size:16px;color:#44506a;margin:0;max-width:56ch;line-height:1.7">CHAS accredited, SSIP registered and fully insured, with a CSCS-carded workforce working to NHBC standards. RAMS supplied per plot or per package.</p>
     <div class="accred-logos-wrap" style="display:flex;gap:36px;align-items:center;flex-wrap:wrap">
